@@ -3,6 +3,7 @@
 ### Resize Raspberry Pi image and emulate with QEMU
 [Video-Tutorial](https://www.youtube.com/watch?v=5_DzkrMDxnc)
 
+### Steps
 1. Update and install QEMU
 sudo apt-get update
 sudo apt-get install qemu
