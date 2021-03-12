@@ -44,9 +44,9 @@ p   primary
 
 ### ***IMPORTANT***
 
-DO you want to remove the signature?
+##### DO you want to remove the signature?
 
-Enter N
+##### Enter N
 
 w   write table to disk and exit
 
