@@ -29,10 +29,15 @@ qemu-img resize 2021-01-11-raspios-buster-armhf-lite.img +6G
 fdisk 2021-01-11-raspios-buster-armhf-lite.img
 
 p   print the partition table
+
 d   delete a partition
+
 2
+
 n   add a new partition
+
 p   primary
+
 2
 
 532480  Starting address of 2nd partition
@@ -40,6 +45,7 @@ p   primary
 ### ***IMPORTANT***
 
 DO you want to remove the signature?
+
 Enter N
 
 w   write table to disk and exit
