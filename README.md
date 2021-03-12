@@ -20,19 +20,20 @@ raspbian_bootpart
 
 1) Check the disk-partition
 fdisk 2021-01-11-raspios-buster-armhf-lite.img
-# p   print the partition table
+p   print the partition table
 
 2) Increase Image size by 6G
 qemu-img resize 2021-01-11-raspios-buster-armhf-lite.img +6G
 
 3) Modify the disk-partition
 fdisk 2021-01-11-raspios-buster-armhf-lite.img
-# p   print the partition table
-# d   delete a partition
-# 2
-# n   add a new partition
-# p   primary
-# 2
+
+p   print the partition table
+d   delete a partition
+2
+n   add a new partition
+p   primary
+2
 
 532480  Starting address of 2nd partition
 
@@ -41,7 +42,7 @@ fdisk 2021-01-11-raspios-buster-armhf-lite.img
 DO you want to remove the signature?
 Enter N
 
-# w   write table to disk and exit
+w   write table to disk and exit
 
 4) Check the result
 fdisk 2021-01-11-raspios-buster-armhf-lite.img
