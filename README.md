@@ -1,7 +1,7 @@
 # RaspberryPi-OpenCL-Driver
 
 ### Resize Raspberry Pi image and emulate with QEMU
-[Video-Tutorial](https://www.youtube.com/watch?v=5_DzkrMDxnc)
+[Video-Steps-Of-Setting-Up-Raspberry-Pi-With-QEMU](https://www.youtube.com/watch?v=5_DzkrMDxnc)
 
 ### Steps
 1. Update and install QEMU
