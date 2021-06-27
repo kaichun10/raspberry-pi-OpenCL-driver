@@ -5,8 +5,11 @@
 
 ### Steps
 1. Update and install QEMU
+
+```linux
 sudo apt-get update
 sudo apt-get install qemu
+```
 
 2. Install the lastest Raspian Pi OS Image:
 https://www.raspberrypi.org/software/operating-systems/
@@ -20,15 +23,28 @@ raspbian_bootpart
 5. Increase the Image size to allow for future upgrades
 
 1) Check the disk-partition
+
+```linux
 fdisk 2021-01-11-raspios-buster-armhf-lite.img
+```
+
+```
 p   print the partition table
+```
 
 2) Increase Image size by 6G
+
+```linux
 qemu-img resize 2021-01-11-raspios-buster-armhf-lite.img +6G
+```
 
 3) Modify the disk-partition
-fdisk 2021-01-11-raspios-buster-armhf-lite.img
 
+```linux
+fdisk 2021-01-11-raspios-buster-armhf-lite.img
+```
+
+```
 p   print the partition table
 
 d   delete a partition
@@ -42,43 +58,65 @@ p   primary
 2
 
 532480  Starting address of 2nd partition
+```
 
-### ***IMPORTANT***
+```
+***IMPORTANT***
 
-##### DO you want to remove the signature?
+DO you want to remove the signature?
 
-##### Enter N
+Enter N
 
+```
+
+```
 w   write table to disk and exit
 
+```
+
 4) Check the result
+
+```linux
 fdisk 2021-01-11-raspios-buster-armhf-lite.img
+```
 
 6. Create a temp folder
 
 7. Mount Image and check files
+
+```linux
 sudo mount -v -o offset=272629760 -t ext4 2021-01-11-raspios-buster-armhf-lite.img temp
 cd temp
 sudo vim ./etc/ld.so.preload
 sudo vim ./etc/fstab
+```
 
 8. Unmount the file
+
+```linux
 cd ..
 sudo umount temp
-
+```
 
 9. Start QEMU:
-qemu-system-arm -kernel raspbian_bootpart/kernel-qemu-4.14.79-stretch -dtb raspbian_bootpart/versatile-pb.dtb -m 256 -M versatilepb -cpu arm1176 -serial stdio -append "rw console=ttyAMA0 root=/dev/sda2 rootfstype=ext4  loglevel=8 rootwait fsck.repair=yes memtest=1" -drive file=2021-01-11-raspios-buster-armhf-lite.img,format=raw -net nic -net user,hostfwd=tcp::5022-:22 -no-reboot
 
+```linux
+qemu-system-arm -kernel raspbian_bootpart/kernel-qemu-4.14.79-stretch -dtb raspbian_bootpart/versatile-pb.dtb -m 256 -M versatilepb -cpu arm1176 -serial stdio -append "rw console=ttyAMA0 root=/dev/sda2 rootfstype=ext4  loglevel=8 rootwait fsck.repair=yes memtest=1" -drive file=2021-01-11-raspios-buster-armhf-lite.img,format=raw -net nic -net user,hostfwd=tcp::5022-:22 -no-reboot
+```
 
 10. Check the resized image
+
+```linux
 df -h
+```
 
 11. Update Raspberry Pi
+
+```linux
 sudo apt update
 sudo apt upgrade
 sudo apt-get autoremove
-
+```
 
 ### POSIX Threads:
 [Useful-POSIX-Tutorials](https://computing.llnl.gov/tutorials/pthreads/)
